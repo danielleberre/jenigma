@@ -44,7 +44,6 @@ public class MainUI extends JFrame {
 
         getContentPane().add(BorderLayout.CENTER, makeLetterPanel());
         getContentPane().add(BorderLayout.NORTH, makeRotorPanel());
-        // getContentPane().add(BorderLayout.EAST, makeRotorList());
         getContentPane().add(BorderLayout.SOUTH, makeInfoPanel());
         setFocusable(true);
         cryptedMessage.setEditable(false);
@@ -68,11 +67,12 @@ public class MainUI extends JFrame {
 
             @Override
             public void keyReleased(KeyEvent e) {
+                // do nothing
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-
+                // do nothing
             }
         });
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -113,10 +113,13 @@ public class MainUI extends JFrame {
                 MainUI.class.getResource("/enigma.jpg")));
         logo.setHorizontalAlignment(SwingConstants.LEFT);
         rotorPanel.add(logo);
+        rotors[0] = new UIRotor(enigma, Position.LEFT);
+        rotors[1] = new UIRotor(enigma, Position.MIDDLE);
+        rotors[2] = new UIRotor(enigma, Position.RIGHT);
         JPanel subRotorPanel = new JPanel();
-        subRotorPanel.add(rotors[0] = new UIRotor(enigma, Position.LEFT));
-        subRotorPanel.add(rotors[1] = new UIRotor(enigma, Position.MIDDLE));
-        subRotorPanel.add(rotors[2] = new UIRotor(enigma, Position.RIGHT));
+        for (UIRotor uirotor : rotors) {
+            subRotorPanel.add(uirotor);
+        }
         rotorPanel.add(subRotorPanel);
         rotorPanel.add(makeRotorList());
         return rotorPanel;
@@ -124,7 +127,6 @@ public class MainUI extends JFrame {
 
     private JPanel makeRotorList() {
         JPanel listPanel = new JPanel();
-        // listPanel.setLayout(new GridLayout(1,1));
         DefaultListModel<RealRotor> model = new DefaultListModel<RealRotor>();
         for (RealRotor rotor : RealRotor.rotors()) {
             model.addElement(rotor);
@@ -148,7 +150,6 @@ public class MainUI extends JFrame {
 
         };
         list.setCellRenderer(renderer);
-        // list.setPreferredSize(new Dimension(200,200));
         listPanel.add(new JScrollPane(list));
         TransferHandler provideHandler = new TransferHandler() {
 
