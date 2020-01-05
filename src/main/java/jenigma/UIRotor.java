@@ -21,7 +21,7 @@ public class UIRotor extends JPanel {
     
     private JLabel letterl = new JLabel("-");
     private JLabel rotorl = new JLabel("-");
-    private Enigma enigma;
+    private transient Enigma enigma;
     private Position pos;
 
     public UIRotor(Enigma enigma, Position pos) {
@@ -73,13 +73,6 @@ public class UIRotor extends JPanel {
                     return false;
                 }
             }
-
-            @Override
-            protected void exportDone(JComponent source, Transferable data,
-                    int action) {
-                super.exportDone(source, data, action);
-            }
-
         };
         setTransferHandler(labelHandler);
     }

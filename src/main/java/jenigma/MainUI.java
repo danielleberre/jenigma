@@ -35,7 +35,7 @@ public class MainUI extends JPanel {
 
     private JTextField cryptedMessage = new JTextField();
 
-    private final Enigma enigma = new DLBEnigma(Rotor.NONE,Rotor.NONE,Rotor.NONE,Reflector.REFLECTOR_B);
+    private final transient Enigma enigma = new DLBEnigma(Rotor.NONE,Rotor.NONE,Rotor.NONE,Reflector.REFLECTOR_B);
     private KeyLabel[] keys = new KeyLabel[26];
     private UIRotor[] rotors = new UIRotor[3];
 
@@ -124,27 +124,21 @@ public class MainUI extends JPanel {
 
     private JPanel makeRotorList() {
         JPanel listPanel = new JPanel();
-        DefaultListModel<RealRotor> model = new DefaultListModel<RealRotor>();
+        DefaultListModel<RealRotor> model = new DefaultListModel<>();
         for (RealRotor rotor : RealRotor.rotors()) {
             model.addElement(rotor);
         }
-        JList<RealRotor> list = new JList<RealRotor>(model);
+        JList<RealRotor> list = new JList<>(model);
         list.setLayoutOrientation(JList.VERTICAL_WRAP);
         list.setVisibleRowCount(3);
-        ListCellRenderer<RealRotor> renderer = new ListCellRenderer<>() {
-
-            @Override
-            public Component getListCellRendererComponent(
-                    JList<? extends RealRotor> list, RealRotor value,
-                    int index, boolean isSelected, boolean cellHasFocus) {
+        ListCellRenderer<RealRotor> renderer = (aList, value,
+            index, isSelected, cellHasFocus) -> {
                 JButton label = new JButton(value.toString() + "("
                         + value.number() + ")");
                 label.setHorizontalAlignment(SwingConstants.CENTER);
                 label.setVerticalAlignment(SwingConstants.CENTER);
                 label.setPreferredSize(new Dimension(100, 40));
                 return label;
-            }
-
         };
         list.setCellRenderer(renderer);
         listPanel.add(new JScrollPane(list));
