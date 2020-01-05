@@ -26,7 +26,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.SwingConstants;
 import javax.swing.TransferHandler;
 
-public class MainUI extends JFrame {
+public class MainUI extends JPanel {
 
     /**
      * 
@@ -40,11 +40,10 @@ public class MainUI extends JFrame {
     private UIRotor[] rotors = new UIRotor[3];
 
     public MainUI() {
-        super("DUT 2015 Enigma");
-
-        getContentPane().add(BorderLayout.CENTER, makeLetterPanel());
-        getContentPane().add(BorderLayout.NORTH, makeRotorPanel());
-        getContentPane().add(BorderLayout.SOUTH, makeInfoPanel());
+        setLayout(new BorderLayout());
+        add(BorderLayout.CENTER, makeLetterPanel());
+        add(BorderLayout.NORTH, makeRotorPanel());
+        add(BorderLayout.SOUTH, makeInfoPanel());
         setFocusable(true);
         cryptedMessage.setEditable(false);
         addKeyListener(new KeyListener() {
@@ -75,9 +74,7 @@ public class MainUI extends JFrame {
                 // do nothing
             }
         });
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pack();
-        setVisible(true);
+        
     }
 
     private boolean enigmaReady() {
@@ -134,7 +131,7 @@ public class MainUI extends JFrame {
         JList<RealRotor> list = new JList<RealRotor>(model);
         list.setLayoutOrientation(JList.VERTICAL_WRAP);
         list.setVisibleRowCount(3);
-        ListCellRenderer<RealRotor> renderer = new ListCellRenderer<RealRotor>() {
+        ListCellRenderer<RealRotor> renderer = new ListCellRenderer<>() {
 
             @Override
             public Component getListCellRendererComponent(
@@ -176,6 +173,7 @@ public class MainUI extends JFrame {
         };
         list.setTransferHandler(provideHandler);
         MouseListener mouselistener = new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent me) {
                 JComponent comp = (JComponent) me.getSource();
                 TransferHandler handler = comp.getTransferHandler();
@@ -197,7 +195,12 @@ public class MainUI extends JFrame {
     }
 
     public static void main(String[] args) {
+        JFrame frame = new JFrame("DUT 2015 Enigma");
         MainUI ui = new MainUI();
+        frame.getContentPane().add(BorderLayout.CENTER,ui);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
     }
 
 }

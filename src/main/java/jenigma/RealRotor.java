@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class RealRotor implements Rotor, Transferable {
 
+    private static final String IDENTITY_MAPPING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	public static final RealRotor I = new RealRotor("I",1,
 			"EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q');
 	public static final RealRotor II = new RealRotor("II",2,
@@ -24,12 +25,9 @@ public class RealRotor implements Rotor, Transferable {
 	public static final RealRotor VIII = new DoubleAdvanceRotor("VIII",8,
 			"FKQHTLXOCBJSPDZRAMEWNIUYGV", 'Z', 'M');
 
-	public static final RealRotor IDENTITY1 = new RealRotor("I1",9,
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 'Z');
-	public static final RealRotor IDENTITY2 = new RealRotor("I2",10,
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 'Z');
-	public static final RealRotor IDENTITY3 = new RealRotor("I3",11,
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 'Z');
+	public static final RealRotor IDENTITY1 = new RealRotor("I1",9, IDENTITY_MAPPING, 'Z');
+	public static final RealRotor IDENTITY2 = new RealRotor("I2",10, IDENTITY_MAPPING, 'Z');
+	public static final RealRotor IDENTITY3 = new RealRotor("I3",11, IDENTITY_MAPPING, 'Z');
 	
 	public static final DataFlavor ROTOR_FLAVOR = new DataFlavor(RealRotor.class,"Enigma Rotor");
 	
