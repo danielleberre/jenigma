@@ -15,7 +15,7 @@ public class KeyLabel extends JLabel {
      */
     private static final long serialVersionUID = 1L;
 
-    private Timer timer = new Timer(); 
+    private transient Timer timer = new Timer(); 
     
     public KeyLabel(String str) {
         super(str);
