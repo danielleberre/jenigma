@@ -35,7 +35,7 @@ public class MainUI extends JFrame {
 
     private JTextField cryptedMessage = new JTextField();
 
-    private final Enigma enigma = new DLBEnigma();
+    private final Enigma enigma = new DLBEnigma(Rotor.NONE,Rotor.NONE,Rotor.NONE,Reflector.REFLECTOR_B);
     private KeyLabel[] keys = new KeyLabel[26];
     private UIRotor[] rotors = new UIRotor[3];
 
