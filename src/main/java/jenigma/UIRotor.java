@@ -3,10 +3,8 @@ package jenigma;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.datatransfer.Transferable;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
