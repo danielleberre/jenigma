@@ -1,5 +1,8 @@
 # A simplified enigma machine in Java
 
+[![Build Status](https://travis-ci.org/danielleberre/jenigma.svg?branch=master)](https://travis-ci.org/danielleberre/jenigma) 
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=dlb%3Ajenigma&metric=code_smells)](https://sonarcloud.io/dashboard?id=dlb%3Ajenigma)
+
 In winter 2015, I visited [Bletchley Park](https://en.wikipedia.org/wiki/Bletchley_Park),
 where I saw real [Enigma machines](https://en.wikipedia.org/wiki/Enigma_machine).
 
