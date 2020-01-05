@@ -49,7 +49,6 @@ jar {
 
 sonarqube {
     properties {
-        property "sonar.organization", "danielleberre-github"
         // must be unique in a given SonarQube instance
         property "sonar.projectKey","dlb:jenigma"
         // this is the name and version displayed in the SonarQube UI. Was mandatory prior to SonarQube 6.1.
