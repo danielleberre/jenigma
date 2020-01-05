@@ -12,6 +12,12 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
+
+    // Apply sonarqube analysis
+    id "org.sonarqube" version "2.7"
+
+    // Add code coverage
+     id 'jacoco'
 }
 
 repositories {
@@ -39,4 +45,39 @@ jar {
       'Main-Class': 'jenigma.MainUI'
     )
   }
+}
+
+sonarqube {
+    properties {
+        property "sonar.organization", "danielleberre-github"
+        // must be unique in a given SonarQube instance
+        property "sonar.projectKey","dlb:jenigma"
+        // this is the name and version displayed in the SonarQube UI. Was mandatory prior to SonarQube 6.1.
+        property "sonar.projectName","JEnigma"
+        property "sonar.projectVersion","0.1"
+ 
+        // Path is relative to the sonar-project.properties file. Replace "\" by "/" on Windows.
+        // This property is optional if sonar.modules is set. 
+        // property "sonar.sources","src/main/java"
+ 
+        // Encoding of the source code. Default is default system encoding
+        property "sonar.sourceEncoding","UTF-8"
+
+        // Additional java settings
+        property "sonar.java.binaries","build/classes/java/main/"
+
+        property "sonar.coverage.jacoco.xmlReportPaths","build/reports/jacocoReport.xml"
+    }
+}
+
+jacoco {
+    applyTo run
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        xml.destination file("build/reports/jacocoReport.xml")
+    }
 }
