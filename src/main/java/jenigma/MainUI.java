@@ -158,7 +158,7 @@ public class MainUI extends JPanel {
                     int action) {
                 if (action == MOVE) {
                     JList<RealRotor> alist = (JList<RealRotor>) source;
-                    ((DefaultListModel) alist.getModel()).removeElement(data);
+                    ((DefaultListModel<RealRotor>) alist.getModel()).removeElement(data);
                 }
                 requestFocusInWindow();
             }

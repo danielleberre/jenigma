@@ -15,8 +15,8 @@ public class KeyLabel extends JLabel {
      */
     private static final long serialVersionUID = 1L;
 
-    private transient Timer timer = new Timer(); 
-    
+    private transient Timer timer = new Timer();
+
     public KeyLabel(String str) {
         super(str);
         setOpaque(true);
@@ -26,11 +26,11 @@ public class KeyLabel extends JLabel {
         setVerticalAlignment(SwingConstants.CENTER);
         setPreferredSize(new Dimension(150, 150));
     }
-    
+
     public void hightlight() {
         setBackground(Color.YELLOW);
         timer.schedule(new TimerTask() {
-            
+
             @Override
             public void run() {
                 setBackground(Color.WHITE);

@@ -2,6 +2,6 @@ package jenigma;
 
 public interface LeftToRight extends InOutNext {
 
-	void setNextRotor(InOutNext r);
+    void setNextRotor(InOutNext r);
 
 }

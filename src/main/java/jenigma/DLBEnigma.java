@@ -113,17 +113,17 @@ public class DLBEnigma implements Enigma, InOut {
     public int getRotor(Position pos) {
         switch (pos) {
         case LEFT:
-            if (left==null) {
+            if (left == null) {
                 return 0;
             }
             return left.number();
         case MIDDLE:
-            if (middle==null) {
+            if (middle == null) {
                 return 0;
             }
             return middle.number();
         case RIGHT:
-            if (right==null) {
+            if (right == null) {
                 return 0;
             }
             return right.number();
@@ -151,17 +151,17 @@ public class DLBEnigma implements Enigma, InOut {
     public char getRotorLetter(Position pos) {
         switch (pos) {
         case LEFT:
-            if (left ==null) {
+            if (left == null) {
                 return ' ';
             }
             return left.getLetter();
         case MIDDLE:
-            if (middle ==null) {
+            if (middle == null) {
                 return ' ';
             }
             return middle.getLetter();
         case RIGHT:
-            if (right ==null) {
+            if (right == null) {
                 return ' ';
             }
             return right.getLetter();
