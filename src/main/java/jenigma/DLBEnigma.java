@@ -5,12 +5,7 @@ public class DLBEnigma implements Enigma, InOut {
     private Rotor left, middle, right;
     private Reflector reflector;
 
-    private StringBuffer encodedMessage = new StringBuffer();
-
-    public DLBEnigma() {
-        // this(RealRotor.I, RealRotor.II, RealRotor.III, Reflector.REFLECTOR_B);
-        this.reflector = Reflector.REFLECTOR_B;
-    }
+    private StringBuilder encodedMessage = new StringBuilder();
 
     public DLBEnigma(Rotor left, Rotor middle, Rotor right, Reflector reflector) {
         this.left = left;
@@ -33,7 +28,7 @@ public class DLBEnigma implements Enigma, InOut {
     }
 
     public String getKey() {
-        StringBuffer stb = new StringBuffer();
+        StringBuilder stb = new StringBuilder();
         stb.append(this.left.getLetter());
         stb.append(this.middle.getLetter());
         stb.append(this.right.getLetter());
@@ -177,7 +172,7 @@ public class DLBEnigma implements Enigma, InOut {
 
     @Override
     public String getCurrentLetters() {
-        StringBuffer stb = new StringBuffer();
+        StringBuilder stb = new StringBuilder();
         if (this.left == null) {
             stb.append(" ");
         } else {
