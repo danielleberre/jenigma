@@ -111,5 +111,9 @@ public class TestEnigma {
         enigma.setKey('A', 'A', 'A');
         enigma.push("TROPXFORTEXCETTEXMACHINE");
         assertEquals("OCNXTQMTHCHKLAUNQDPIWSZZ",enigma.getEncryptedMessage());
+        enigma.resetMessage();
+        enigma.setKey('A', 'A', 'A');
+        enigma.push("ELLEXESTXTROPXFORTEXCETTEXMACHINE");
+        assertEquals("FEBWTNVRQAVHOHWVPIOUVPEWCALHAZZHR",enigma.getEncryptedMessage());
     }
 }
